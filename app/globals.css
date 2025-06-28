@@ -1,0 +1,392 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.5rem;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Add smooth transitions for all elements */
+* {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Ensure content is hidden until splash screen is gone */
+main {
+  opacity: 0;
+  animation: fadeInContent 0.5s ease-in forwards;
+  /* animation-delay: 2s; Match this with splash screen duration */
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+    position: relative;
+    min-height: 100vh;
+    background: transparent;
+  }
+
+  /* Main background pattern */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/background.jpg");
+    background-repeat: repeat;
+    background-size: 300px;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -2;
+    pointer-events: none;
+  }
+}
+
+@layer components {
+  /* Header and footer styles */
+  header[class],
+  footer[class] {
+    background-color: #faf6f1 !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Card and container styles */
+  .card,
+  .modal,
+  .dialog,
+  .popover,
+  .bg-gray-50.p-6,
+  .bg-gray-50.p-6.rounded-lg {
+    background-color: #faf6f1 !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    border-radius: 0 !important;
+  }
+
+  /* Input and select styles */
+  input[type="text"],
+  select.border,
+  .relative.flex-grow input {
+    background-color: #faf6f1 !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    border-radius: 0 !important;
+  }
+
+  /* Table styles */
+  .border {
+    border-color: rgba(0, 0, 0, 0.8) !important;
+    border-radius: 0 !important;
+  }
+
+  /* Product image container in cart */
+  .w-20.h-20.rounded.bg-gray-100 {
+    background-color: #faf6f1 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cart specific styles */
+  .cart-item {
+    background-color: #faf6f1 !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cart summary styles */
+  .bg-gray-50.p-6.rounded-lg {
+    background-color: #faf6f1 !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cart table styles */
+  .cart-table th,
+  .cart-table td {
+    background-color: #faf6f1 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cart quantity controls */
+  .quantity-controls button {
+    background-color: #3a3228 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cart checkout button */
+  .checkout-button {
+    background-color: #faf6f1 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cart empty state */
+  .empty-cart {
+    background-color: #faf6f1 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cart item remove button */
+  .remove-item {
+    background-color: #faf6f1 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Product card specific styles */
+  .group.bg-white {
+    background-color: #faf6f1 !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem !important;
+    overflow: hidden !important;
+  }
+
+  /* Product showcase section styles */
+  section.bg-gray-50 {
+    background-color: #faf6f1 !important;
+    backdrop-filter: none !important;
+    border-radius: 1rem !important;
+    overflow: hidden !important;
+  }
+
+  /* Product showcase container styles */
+  .container.mx-auto.flex {
+    background-color: #faf6f1 !important;
+    backdrop-filter: none !important;
+    border-radius: 1rem !important;
+    overflow: hidden !important;
+  }
+
+  /* Product details container */
+  .bg-gray-50.p-6.rounded-lg {
+    background-color: #faf6f1 !important;
+    border-radius: 1rem !important;
+  }
+
+  /* Product description container */
+  .mt-6.space-y-6 {
+    background-color: #faf6f1 !important;
+    border-radius: 1rem !important;
+  }
+
+  /* Product features list */
+  .mt-6.space-y-4 {
+    background-color: #faf6f1 !important;
+    border-radius: 1rem !important;
+  }
+
+  /* Product CTA section */
+  .mt-8.flex.items-center.justify-between {
+    background-color: #faf6f1 !important;
+    border-radius: 1rem !important;
+  }
+
+  /* Remove white backgrounds from components */
+  .bg-background:not(header):not(footer),
+  .bg-white:not(header):not(footer),
+  .bg-gray-50:not(header):not(footer),
+  .bg-gray-100:not(header):not(footer) {
+    background-color: transparent !important;
+  }
+
+  /* Ensure text remains readable */
+  .text-gray-600,
+  .text-gray-700 {
+    color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Testimonials specific styles */
+  .testimonial-card {
+    background-color: #faf6f1 !important; /* Matching warm color */
+    backdrop-filter: none !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Product card hover state */
+  .group.bg-white:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Product image container */
+  .w-full.h-64.rounded-t-lg {
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+  }
+
+  /* Product content container */
+  .p-4 {
+    border-bottom-left-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+  }
+
+  /* Product image in details */
+  .w-full.h-96.rounded-lg {
+    border-radius: 1rem !important;
+  }
+
+  /* Button styles - global */
+  button,
+  .button,
+  [type="button"],
+  [type="submit"],
+  [type="reset"] {
+    background-color: #000000 !important;
+    border-color: rgba(0, 0, 0, 0.8) !important;
+    color: rgba(255, 255, 255, 0.897) !important;
+    border-radius: 0.5rem !important;
+  }
+
+  button:hover,
+  .button:hover,
+  [type="button"]:hover,
+  [type="submit"]:hover,
+  [type="reset"]:hover {
+    background-color: #0f0f0f77 !important;
+    border-color: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  /* Primary button styles */
+  button[data-variant="default"],
+  .button[data-variant="default"] {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: rgba(0, 0, 0, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  button[data-variant="default"]:hover,
+  .button[data-variant="default"]:hover {
+    background-color: #f5f0e8 !important;
+    border-color: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  /* Outline button styles */
+  button[data-variant="outline"],
+  .button[data-variant="outline"] {
+    background-color: #000000 !important;
+    border-color: rgba(0, 0, 0, 0.8) !important;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  button[data-variant="outline"]:hover,
+  .button[data-variant="outline"]:hover {
+    background-color: #000000 !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* Ghost button styles */
+  button[data-variant="ghost"],
+  .button[data-variant="ghost"] {
+    background-color: transparent !important;
+    color: rgba(0, 0, 0, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  button[data-variant="ghost"]:hover,
+  .button[data-variant="ghost"]:hover {
+    background-color: #faf6f1 !important;
+    border-color: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  /* Checkout button specific styles */
+  button[data-variant="default"][size="lg"],
+  .button[data-variant="default"][size="lg"] {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: #faf6f1 !important;
+    font-weight: 600 !important;
+    border-color: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  button[data-variant="default"][size="lg"]:hover,
+  .button[data-variant="default"][size="lg"]:hover {
+    background-color: rgba(0, 0, 0, 1) !important;
+    border-color: rgba(0, 0, 0, 1) !important;
+  }
+
+  /* Filter panel styles */
+  .bg-gray-50.p-6 {
+    background-color: #faf6f1 !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    border-radius: 0.75rem !important;
+  }
+
+  /* Table header and cells */
+  th,
+  td {
+    /* background-color: rgb(255, 253, 250) !important; */
+    border-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Table row hover */
+  /* tr:hover td {
+    background-color: #f5f0e8 !important;
+  } */
+
+  /* Input styles in cart */
+  input[type="text"] {
+    background-color: rgba(250, 246, 241, 0.4) !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    border-radius: 40 !important;
+  }
+
+  input[type="text"]:focus {
+    border-color: rgba(0, 0, 0, 0.9) !important;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+  }
+}
