@@ -66,7 +66,7 @@ function Carousel({ carouselItems }: ProductCarouselProps) {
               key={item.id}
               className="min-w-full relative cursor-pointer aspect-[4/4] md:aspect-[16/4] lg:aspect-[16/4.4]"
             >
-              <div className="relative w-full h-[50vh] overflow-hidden">
+              <div className="relative w-full h-[49vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-green-900/40 to-transparent z-10" />
                 {item.type === "video" ? (
                   <video
