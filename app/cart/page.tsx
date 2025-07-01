@@ -43,15 +43,11 @@ export default function CartPage() {
   const handleCheckout = () => {
     // Track Initiate Checkout event for Facebook Pixel
     if (items && items.length > 0) {
-      trackInitiateCheckout(items, finalTotal);
+      trackInitiateCheckout(items, totalPrice);
     }
     
     router.push("/checkout");
   };
-
-  // Shipping calculation (free over ₹999)
-  const shippingCost = totalPrice >= 999 ? 0 : 100;
-  const finalTotal = totalPrice + shippingCost;
 
   if (items.length === 0) {
     return (
@@ -165,22 +161,13 @@ export default function CartPage() {
                 <span className="text-gray-600">Subtotal</span>
                 <span>₹{totalPrice}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
-                <span>{shippingCost === 0 ? "Free" : `₹${shippingCost}`}</span>
-              </div>
-              {shippingCost > 0 && (
-                <div className="text-sm text-gray-500">
-                  Free shipping on orders over ₹999
-                </div>
-              )}
             </div>
 
             <Separator className="my-4" />
 
             <div className="flex justify-between mb-6">
               <span className="font-semibold">Total</span>
-              <span className="font-bold text-lg">₹{finalTotal}</span>
+              <span className="font-bold text-lg">₹{totalPrice}</span>
             </div>
 
             <div className="space-y-4">

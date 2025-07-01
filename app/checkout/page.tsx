@@ -227,14 +227,10 @@ export default function CheckoutPage(): JSX.Element {
         if (verificationResult) {
           // Track Purchase event for Facebook Pixel
           if (items && items.length > 0) {
-            const shippingCost = totalPrice >= 999 ? 0 : 100;
-            const finalTotal = totalPrice + shippingCost;
-            
             trackPurchase(
               response.razorpay_order_id,
               items,
-              finalTotal,
-              shippingCost,
+              totalPrice,
               'razorpay'
             );
           }
@@ -311,11 +307,9 @@ export default function CheckoutPage(): JSX.Element {
 
     try {
       const formData = form.getValues();
-      const shippingCost = totalPrice >= 999 ? 0 : 100;
-      const finalTotal = totalPrice + shippingCost;
 
       const orderData: OrderData = {
-        amount: finalTotal,
+        amount: totalPrice,
         currency: "INR",
         customerInfo: formData,
         items: items || [],
@@ -324,7 +318,7 @@ export default function CheckoutPage(): JSX.Element {
       const orderResult = await createOrder(orderData);
 
       if (orderResult.id) {
-        await initializeRazorpay(orderResult.id, finalTotal);
+        await initializeRazorpay(orderResult.id, totalPrice);
       } else {
         setError(orderResult.message || "Failed to create order");
         toast.error(
@@ -346,13 +340,10 @@ export default function CheckoutPage(): JSX.Element {
       setError("");
 
       try {
-        const shippingCost = totalPrice >= 999 ? 0 : 100;
-        const finalTotal = totalPrice + shippingCost;
-
         const orderData: OrderData = {
           ...data,
           paymentMethod: "cod",
-          amount: finalTotal,
+          amount: totalPrice,
           items: items || [],
           status: "pending",
           customerInfo: data,
@@ -367,8 +358,7 @@ export default function CheckoutPage(): JSX.Element {
             trackPurchase(
               orderResult.id || 'cod-order',
               items,
-              finalTotal,
-              shippingCost,
+              totalPrice,
               'cod'
             );
           }
@@ -428,10 +418,6 @@ export default function CheckoutPage(): JSX.Element {
       </div>
     );
   }
-
-  // Calculate totals
-  const shippingCost = totalPrice >= 999 ? 0 : 100;
-  const finalTotal = totalPrice + shippingCost;
 
   return (
     <>
@@ -608,9 +594,7 @@ export default function CheckoutPage(): JSX.Element {
                               field.onChange(value);
                               // Track Add Payment Info event when payment method is selected
                               if (items && items.length > 0) {
-                                const shippingCost = totalPrice >= 999 ? 0 : 100;
-                                const finalTotal = totalPrice + shippingCost;
-                                trackAddPaymentInfo(items, finalTotal, value);
+                                trackAddPaymentInfo(items, totalPrice, value);
                               }
                             }}
                             defaultValue={field.value}
@@ -684,19 +668,13 @@ export default function CheckoutPage(): JSX.Element {
                   <span className="text-gray-600">Subtotal</span>
                   <span>₹{totalPrice || 0}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span>
-                    {shippingCost === 0 ? "Free" : `₹${shippingCost}`}
-                  </span>
-                </div>
               </div>
 
               <Separator className="my-4" />
 
               <div className="flex justify-between">
                 <span className="font-semibold">Total</span>
-                <span className="font-bold text-lg">₹{finalTotal}</span>
+                <span className="font-bold text-lg">₹{totalPrice}</span>
               </div>
             </div>
           </div>
