@@ -73,3 +73,34 @@ export const sendPaymentMail = async ({
 
   await sendEmail({ email, subject, htmlContent });
 };
+
+// Send order confirmation mail with tracking info
+export const sendOrderConfirmationMail = async ({
+  email,
+  orderId,
+  trackingNumber,
+  invoiceHtml = ""
+}: {
+  email: string;
+  orderId: string;
+  trackingNumber: string;
+  invoiceHtml?: string;
+}): Promise<void> => {
+  const subject = `Your Order #${orderId} - ShaastraYog`;
+  const trackingLink = `https://www.nimbuspost.com/track?awb=${trackingNumber}`;
+  const htmlContent = `
+    <div style="font-family: Arial, sans-serif; padding: 20px; line-height: 1.5;">
+      <p>Dear Customer,</p>
+      <p>Your order <b>#${orderId}</b> has been shipped.</p>
+      <p>Track your shipment: <a href="${trackingLink}">${trackingLink}</a></p>
+      <h3>Invoice</h3>
+      ${invoiceHtml}
+      <br>
+      <p>For any queries, contact us at customercare@shaastrayog.com</p>
+      <br>
+      <p>Warm regards,</p>
+      <p><strong>Team ShaastraYog</strong></p>
+    </div>
+  `;
+  await sendEmail({ email, subject, htmlContent });
+};
