@@ -230,8 +230,7 @@ export default function CheckoutPage(): JSX.Element {
             trackPurchase(
               response.razorpay_order_id,
               items,
-              totalPrice,
-              'razorpay'
+              Number(totalPrice),
             );
           }
 
@@ -309,7 +308,7 @@ export default function CheckoutPage(): JSX.Element {
       const formData = form.getValues();
 
       const orderData: OrderData = {
-        amount: totalPrice,
+        amount: Number(totalPrice),
         currency: "INR",
         customerInfo: formData,
         items: items || [],
@@ -318,7 +317,7 @@ export default function CheckoutPage(): JSX.Element {
       const orderResult = await createOrder(orderData);
 
       if (orderResult.id) {
-        await initializeRazorpay(orderResult.id, totalPrice);
+        await initializeRazorpay(orderResult.id, Number(totalPrice));
       } else {
         setError(orderResult.message || "Failed to create order");
         toast.error(
@@ -343,7 +342,7 @@ export default function CheckoutPage(): JSX.Element {
         const orderData: OrderData = {
           ...data,
           paymentMethod: "cod",
-          amount: totalPrice,
+          amount: Number(totalPrice),
           items: items || [],
           status: "pending",
           customerInfo: data,
@@ -358,8 +357,7 @@ export default function CheckoutPage(): JSX.Element {
             trackPurchase(
               orderResult.id || 'cod-order',
               items,
-              totalPrice,
-              'cod'
+              Number(totalPrice),
             );
           }
 
@@ -594,7 +592,7 @@ export default function CheckoutPage(): JSX.Element {
                               field.onChange(value);
                               // Track Add Payment Info event when payment method is selected
                               if (items && items.length > 0) {
-                                trackAddPaymentInfo(items, totalPrice, value);
+                                trackAddPaymentInfo(items, Number(totalPrice), value);
                               }
                             }}
                             defaultValue={field.value}
