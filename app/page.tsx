@@ -10,6 +10,7 @@ import PCCarousel from "@/components/ui/pc-carousel";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import FeaturesSection from "@/components/ui/features-section";
+import Script from "next/script";
 
 const carouselItems = [
   {
@@ -31,6 +32,11 @@ const carouselItems = [
     productUrl: "/product/prod2",
   },
 ];
+
+export const metadata = {
+  title: "ShaastraYog | Authentic Ayurvedic Products & Shilajit",
+  description: "ShaastraYog offers pure Himalayan Shilajit and premium Ayurvedic wellness products. Shop now for authentic, natural health solutions.",
+};
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -64,6 +70,19 @@ export default function Home() {
 
   return (
     <>
+      <Script id="organization-ld-json" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "ShaastraYog",
+          "url": "https://shaastrayog.com",
+          "logo": "https://shaastrayog.com/images/icon.png",
+          "sameAs": [
+            "https://www.instagram.com/shaastrayog_/"
+          ],
+          "description": "ShaastraYog offers pure Himalayan Shilajit and premium Ayurvedic wellness products. Shop now for authentic, natural health solutions."
+        })}
+      </Script>
       <SpeedInsights/>
       <Analytics />
       {/* Hero Section */}

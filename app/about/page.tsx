@@ -14,10 +14,10 @@ export default function AboutPage() {
           <div className="flex flex-col gap-6  rounded-lg p-8">
             <h1 className="text-5xl">At ShaastraYog,</h1>
             <p className="text-lg">
-              ShaastraYog is dedicated to providing authentic Ayurvedic products and promoting holistic well-being. We believe in the power of ancient Indian traditions to nourish the mind, body, and spirit. Our carefully curated selection of products is sourced with integrity and designed to support your journey towards a healthier, more balanced life.
+              ShaastraYog is a wellness brand dedicated to providing a range of authentic Ayurvedic products, including pure Himalayan Shilajit. We focus on offering high-quality, natural wellness solutions rooted in the ancient traditions of Ayurveda.
             </p>
             <p className="text-lg">
-              Our mission is to make the benefits of Ayurveda accessible to everyone. We are committed to quality, sustainability, and ethical practices. Whether you are seeking natural remedies, wellness supplements, or products for daily self-care, ShaastraYog is your trusted partner on the path to vitality and harmony.
+              Our mission is to make the benefits of genuine Ayurvedic products accessible to everyone. We are committed to quality, authenticity, and ethical sourcing. If you are seeking the purest Ayurvedic products for your daily wellness, ShaastraYog is your trusted partner.
             </p>
           </div>
         </div>
