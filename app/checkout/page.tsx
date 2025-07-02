@@ -361,6 +361,20 @@ export default function CheckoutPage(): JSX.Element {
             );
           }
 
+          // Call API route to send confirmation email for COD
+          await fetch("/api/send-cod-confirmation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: data.email,
+              orderId: orderResult.id || 'cod-order',
+              customerName: `${data.firstName} ${data.lastName}`,
+              items: items || [],
+              total: Number(totalPrice),
+              paymentMethod: 'Cash on Delivery',
+            }),
+          });
+
           toast.success("Order placed successfully! Please pay on delivery.");
           clearCart();
           router.push("/order-success");
@@ -605,6 +619,14 @@ export default function CheckoutPage(): JSX.Element {
                               <FormLabel className="font-normal">
                                 Pay with Razorpay (Credit/Debit Card, UPI,
                                 Wallet)
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value="cod" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Cash on Delivery (COD)
                               </FormLabel>
                             </FormItem>
                           </RadioGroup>

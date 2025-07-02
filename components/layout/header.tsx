@@ -75,6 +75,12 @@ export function Header() {
           >
             About
           </Link>
+          <Link
+            href="/order-track"
+            className="text-gray-800 hover:text-primary transition-colors"
+          >
+            Track Order
+          </Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -157,6 +163,13 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              href="/order-track"
+              className="text-gray-800 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Track Order
             </Link>
             <div className="flex items-center justify-between pt-4 border-t">
               {status === "authenticated" ? (
