@@ -35,7 +35,7 @@ const carouselItems = [
 
 export default function HomeClient() {
   const [showSplash, setShowSplash] = useState(true);
-  const [isMobile, setIsMobile] = useState<null | boolean>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // Check if the user has already seen the splash screen
