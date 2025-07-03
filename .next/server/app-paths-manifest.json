@@ -1,5 +1,10 @@
 {
-  "/not-found": "app/not-found.js",
   "/page": "app/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/cart/page": "app/cart/page.js",
+  "/checkout/page": "app/checkout/page.js",
+  "/order-success/page": "app/order-success/page.js",
+  "/api/order/route": "app/api/order/route.js",
+  "/api/send-cod-confirmation/route": "app/api/send-cod-confirmation/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/nimbus/create-shipment/route": "app/api/nimbus/create-shipment/route.js"
 }
