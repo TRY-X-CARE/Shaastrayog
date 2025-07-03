@@ -3,6 +3,3 @@ node_modules
 .env
 .next
 trace.log
-.env.local
-trace
-``
