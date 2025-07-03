@@ -235,6 +235,27 @@ export default function CheckoutPage(): JSX.Element {
           }
 
           toast.success("Payment successful! Your order is being processed.");
+          await fetch("/api/nimbus/create-shipment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              customer_name: `${formData.firstName} ${formData.lastName}`,
+              customer_address: formData.address,
+              customer_city: formData.city,
+              customer_state: formData.state,
+              customer_pincode: formData.postalCode,
+              customer_phone: formData.phone,
+              order_number: response.razorpay_order_id,
+              product_name: (items || []).map(i => i.name).join(", "),
+              quantity: (items || []).reduce((sum, i) => sum + i.quantity, 0),
+              length: 100,
+              breadth: 95,
+              height: 60,
+              weight: 0.1, // 100 grams in kg
+              payment_mode: "Prepaid",
+              collectable_amount: 0,
+            }),
+          });
           clearCart();
           router.push("/order-success");
         } else {
@@ -372,6 +393,28 @@ export default function CheckoutPage(): JSX.Element {
               items: items || [],
               total: Number(totalPrice),
               paymentMethod: 'Cash on Delivery',
+            }),
+          });
+
+          await fetch("/api/nimbus/create-shipment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              customer_name: `${data.firstName} ${data.lastName}`,
+              customer_address: data.address,
+              customer_city: data.city,
+              customer_state: data.state,
+              customer_pincode: data.postalCode,
+              customer_phone: data.phone,
+              order_number: orderResult.id || 'cod-order',
+              product_name: (items || []).map(i => i.name).join(", "),
+              quantity: (items || []).reduce((sum, i) => sum + i.quantity, 0),
+              length: 100,
+              breadth: 95,
+              height: 60,
+              weight: 0.1, // 100 grams in kg
+              payment_mode: "COD",
+              collectable_amount: Number(totalPrice),
             }),
           });
 
