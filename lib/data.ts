@@ -4,8 +4,8 @@ export const featuredProducts: Product[] = [
   {
     id: "prod1",
     name: "Premium Quality Shilajit",
-    price: 1285,
-    discountPercentage: 30,
+    price: 1998,
+    discountPercentage: 55,
     shortDescription:
       "Shilajit is a natural substance that is found in the Himalayas. It is a dark, tar-like substance that is found in the rocks of the Himalayas. It is a natural substance that is found in the Himalayas. It is a natural substance that is found in the Himalayas.",
     fullDescription:
@@ -29,9 +29,9 @@ export const featuredProducts: Product[] = [
   },
   {
     id: "prod2",
-    name: "Shaastrayog Narsingh Prash Testoboost",
+    name: "Shaastrayog Narsingh Prash Testobooster",
     price: 1998,
-    discountPercentage: 40,
+    discountPercentage: 35,
     shortDescription: "Improves Overall Health",
     fullDescription:
       "Narsingh Prash is a classical Ayurvedic recipe designed to enhance both overall and sexual health. Its unique blend of natural ingredients offers a multitude of benefits: Improves Overall Health Narsingh prash supports holistic well-being by enhancing bodily functions and boosting immunity.Rejuvenates Cells and Tissues.",
