@@ -68,6 +68,7 @@ export async function POST(request: NextRequest) {
     const data = await response.json();
 
     if (!data.status) {
+      console.error("Nimbus API error:", data.message);
       return NextResponse.json(
         { success: false, message: data.message || "Nimbus API error" },
         { status: 500 }
