@@ -20,7 +20,7 @@ type CartContextType = {
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
-  clearCart: () => void;
+  clearCart: (options?: { showMessage?: boolean }) => void;
   totalItems: number;
   totalPrice: number;
 };
@@ -106,9 +106,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     toast.success("Cart updated.");
   };
 
-  const clearCart = () => {
+  const clearCart = ({ showMessage = true }: { showMessage?: boolean } = {}) => {
     saveCart([]);
-    toast.warning("Cart cleared.");
+    if (showMessage) toast.warning("Cart cleared.");
   };
 
   // 🧠 Use useMemo to ensure correct total values

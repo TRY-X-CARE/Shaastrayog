@@ -230,7 +230,7 @@ export default function CheckoutPage(): JSX.Element {
             trackPurchase(
               response.razorpay_order_id,
               items,
-              Number(totalPrice),
+              Number(totalPrice)
             );
           }
 
@@ -246,7 +246,7 @@ export default function CheckoutPage(): JSX.Element {
               customer_pincode: formData.postalCode,
               customer_phone: formData.phone,
               order_number: response.razorpay_order_id,
-              product_name: (items || []).map(i => i.name).join(", "),
+              product_name: (items || []).map((i) => i.name).join(", "),
               quantity: (items || []).reduce((sum, i) => sum + i.quantity, 0),
               length: 15,
               breadth: 10,
@@ -256,7 +256,7 @@ export default function CheckoutPage(): JSX.Element {
               collectable_amount: 0,
             }),
           });
-          clearCart();
+          clearCart({ showMessage: false });
           router.push("/order-success");
         } else {
           toast.error("Payment verification failed. Please contact support.");
@@ -376,27 +376,13 @@ export default function CheckoutPage(): JSX.Element {
           // Track Purchase event for Facebook Pixel (COD)
           if (items && items.length > 0) {
             trackPurchase(
-              orderResult.id || 'cod-order',
+              orderResult.id || "cod-order",
               items,
-              Number(totalPrice),
+              Number(totalPrice)
             );
           }
 
-          // Call API route to send confirmation email for COD
-          await fetch("/api/send-cod-confirmation", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              email: data.email,
-              orderId: orderResult.id || 'cod-order',
-              customerName: `${data.firstName} ${data.lastName}`,
-              items: items || [],
-              total: Number(totalPrice),
-              paymentMethod: 'Cash on Delivery',
-            }),
-          });
-
-          await fetch("/api/nimbus/create-shipment", {
+          const res = await fetch("/api/nimbus/create-shipment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -406,8 +392,8 @@ export default function CheckoutPage(): JSX.Element {
               customer_state: data.state,
               customer_pincode: data.postalCode,
               customer_phone: data.phone,
-              order_number: orderResult.id || 'cod-order',
-              product_name: (items || []).map(i => i.name).join(", "),
+              order_number: orderResult.id || "cod-order",
+              product_name: (items || []).map((i) => i.name).join(", "),
               quantity: (items || []).reduce((sum, i) => sum + i.quantity, 0),
               length: 15,
               breadth: 10,
@@ -418,9 +404,26 @@ export default function CheckoutPage(): JSX.Element {
             }),
           });
 
-          toast.success("Order placed successfully! Please pay on delivery.");
-          clearCart();
-          router.push("/order-success");
+          if (!res?.status) {
+            console.error("Failed to create shipment for COD order");
+            toast.error("Failed to create shipment for your order");
+          } else {
+            await fetch("/api/send-cod-confirmation", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: data.email,
+                orderId: orderResult.id || "cod-order",
+                customerName: `${data.firstName} ${data.lastName}`,
+                items: items || [],
+                total: Number(totalPrice),
+                paymentMethod: "Cash on Delivery",
+              }),
+            });
+            toast.success("Order placed successfully! Please pay on delivery.");
+            clearCart({ showMessage: false });
+            router.push("/order-success");
+          }
         } else {
           setError(orderResult || "Failed to place order");
         }
@@ -649,7 +652,11 @@ export default function CheckoutPage(): JSX.Element {
                               field.onChange(value);
                               // Track Add Payment Info event when payment method is selected
                               if (items && items.length > 0) {
-                                trackAddPaymentInfo(items, Number(totalPrice), value);
+                                trackAddPaymentInfo(
+                                  items,
+                                  Number(totalPrice),
+                                  value
+                                );
                               }
                             }}
                             defaultValue={field.value}
