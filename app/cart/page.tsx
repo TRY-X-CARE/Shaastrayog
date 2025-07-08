@@ -148,7 +148,7 @@ export default function CartPage() {
               </Link>
             </Button>
 
-            <Button onClick={clearCart}>Clear Cart</Button>
+            <Button onClick={() => clearCart()}>Clear Cart</Button>
           </div>
         </div>
 
