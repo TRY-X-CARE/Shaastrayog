@@ -210,6 +210,10 @@ export default function HomeClient() {
               designed to support your holistic wellness journey. From herbal
               supplements to natural skincare, our offerings are rooted in
               tradition and backed by modern science.
+              Experience the power of nature with our premium Ayurvedic
+              products, crafted to enhance your health and well-being. Each
+              product is carefully formulated using time-tested ingredients,
+              ensuring you receive the highest quality and effectiveness.
             </p>
             <div className="flex justify-center md:justify-start ">
               <Button size="lg" asChild>
