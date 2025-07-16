@@ -4,10 +4,10 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: `
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com https://connect.facebook.net;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://checkout.razorpay.com;
       font-src 'self' https://fonts.gstatic.com;
-      img-src 'self' data: blob: https://checkout.razorpay.com;
+      img-src 'self' data: blob: https://checkout.razorpay.com https://www.facebook.com;
       frame-src https://*.razorpay.com;
       connect-src 'self' https://lumberjack.razorpay.com https://api.razorpay.com;
       object-src 'none';
