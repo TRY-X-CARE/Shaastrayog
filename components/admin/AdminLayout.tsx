@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { CContainer, CSidebar } from "@coreui/react";
 
 export default function AdminLayout({
   children,

@@ -83,7 +83,6 @@ function Carousel({ carouselItems }: ProductCarouselProps) {
                       muted
                       playsInline
                       className="absolute inset-0 w-full h-[50vh] object-cover"
-                      loading="lazy"
                       poster={item.poster || undefined}
                     />
                   ) : (
