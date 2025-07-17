@@ -17,6 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { ProductCard } from "@/components/product/product-card";
 import { trackViewContent } from "@/lib/facebook-pixel";
+import Image from "next/image";
 
 // Define the product type based on usage in the component
 interface Product {
@@ -103,10 +104,13 @@ export default function ProductClient({ product }: { product: Product }) {
         {/* Product Images */}
         <div>
           <div className="mb-4 aspect-square rounded-lg overflow-x bg-gray-100">
-            <img
+            <Image
               src={product.images[currentImage]}
               alt={product.name}
+              width={400}
+              height={400}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
 
@@ -121,10 +125,13 @@ export default function ProductClient({ product }: { product: Product }) {
                 }`}
                 onClick={() => setCurrentImage(index)}
               >
-                <img
+                <Image
                   src={image}
                   alt={`${product.name} ${index + 1}`}
+                  width={100}
+                  height={100}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -306,10 +313,13 @@ export default function ProductClient({ product }: { product: Product }) {
                 <div className="border-b pb-6">
                   <div className="flex justify-between mb-2">
                     <div className="flex items-center">
-                      <img
+                      <Image
                         src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         alt="User"
+                        width={100}
+                        height={100}
                         className="w-10 h-10 rounded-full object-cover mr-4"
+                        loading="lazy"
                       />
                       <div>
                         <h4 className="font-semibold">Priya M.</h4>
@@ -333,10 +343,13 @@ export default function ProductClient({ product }: { product: Product }) {
                 <div className="border-b pb-6">
                   <div className="flex justify-between mb-2">
                     <div className="flex items-center">
-                      <img
+                      <Image
                         src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         alt="User"
+                        width={100}
+                        height={100}
                         className="w-10 h-10 rounded-full object-cover mr-4"
+                        loading="lazy"
                       />
                       <div>
                         <h4 className="font-semibold">Rahul S.</h4>

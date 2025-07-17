@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { trackInitiateCheckout } from "@/lib/facebook-pixel";
+import Image from "next/image";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalPrice, clearCart } =
@@ -85,10 +86,13 @@ export default function CartPage() {
                 <TableRow key={item.id}>
                   <TableCell>
                     <div className="w-20 h-20 rounded  overflow-hidden">
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.name}
+                        width={80}
+                        height={80}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                   </TableCell>

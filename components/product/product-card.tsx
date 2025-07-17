@@ -6,6 +6,7 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/components/cart/cart-provider";
 import { Product } from "@/lib/types";
+import Image from "next/image";
 
 interface ProductCardProps {
   product: Product;
@@ -38,10 +39,13 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       <Link href={`/product/${product.id}`}>
         <div className="relative h-64 overflow-hidden">
-          <img
+          <Image
             src={product.images[0]}
             alt={product.name}
+            width={400}
+            height={400}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
           />
 
           {product.discountPercentage > 0 && (

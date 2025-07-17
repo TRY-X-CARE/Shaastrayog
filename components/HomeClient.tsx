@@ -12,6 +12,7 @@ import { Analytics } from "@vercel/analytics/next";
 import FeaturesSection from "@/components/ui/features-section";
 import Script from "next/script";
 import MarqueeCarousel from "@/components/ui/marquee-carousel";
+import Image from "next/image";
 
 const carouselItems = [
   {
@@ -117,10 +118,13 @@ export default function HomeClient() {
       <section className="py-2 md:py-14 bg-gray-50 p-[10px]">
         <div className="container p-4  mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <Link href={`/product/prod2`}>
-            <img
+            <Image
               src="/images/pure_shilajeet.jpg"
               alt="Yoga"
+              width={550}
+              height={350}
               className="w-[550px] h-[350px] rounded-lg shadow-lg"
+              loading="lazy"
             />
           </Link>
           <div className="w-full  flex flex-col  gap-6">
@@ -166,9 +170,13 @@ export default function HomeClient() {
             </div>
           </div>
           <Link href={`/product/prod1`}>
-            <img
+            <Image
+              alt="dash"
               src="/images/16.png"
               className="w-[550px] h-[350px] rounded-lg shadow-lg"
+              width={550}
+              height={350}
+              loading="lazy"
             />
           </Link>
         </div>
@@ -177,10 +185,13 @@ export default function HomeClient() {
       <section className="py-16 bg-gray-50 p-[10px] ">
         <div className="container p-4  mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <Link href="/shop">
-            <img
+            <Image
               src={"/images/1.png"}
               alt="Yoga"
+              width={550}
+              height={350}
               className="w-[550px] h-[350px] rounded-lg shadow-lg"
+              loading="lazy"
             />
           </Link>
           <div className="w-full  flex flex-col  gap-6">
@@ -228,9 +239,13 @@ export default function HomeClient() {
                   {/* Testimonial 1 */}
                   <div className="testimonial-card p-8 rounded-lg shadow-md mx-4 min-w-[320px] max-w-xs flex-shrink-0">
                     <div className="flex items-center mb-4">
-                      <img
+                      <Image
                         src="/images/testi3.png"
+                        alt="Customer"
+                        width={48}
+                        height={48}
                         className="w-12 h-12 rounded-full object-cover mr-4"
+                        loading="lazy"
                       />
                       <div>
                         <h4 className="font-semibold">Raj Kumar</h4>
@@ -255,10 +270,13 @@ export default function HomeClient() {
                   {/* Testimonial 2 */}
                   <div className="testimonial-card p-8 rounded-lg shadow-md mx-4 min-w-[320px] max-w-xs flex-shrink-0">
                     <div className="flex items-center mb-4">
-                      <img
+                      <Image
                         src="/images/testi2.png"
                         alt="Customer"
+                        width={48}
+                        height={48}
                         className="w-12 h-12 rounded-full object-cover mr-4"
+                        loading="lazy"
                       />
                       <div>
                         <h4 className="font-semibold">Arif Mohammad </h4>
@@ -283,10 +301,13 @@ export default function HomeClient() {
                   {/* Testimonial 3 */}
                   <div className="testimonial-card p-8 rounded-lg shadow-md mx-4 min-w-[320px] max-w-xs flex-shrink-0">
                     <div className="flex items-center mb-4">
-                      <img
+                      <Image
                         src="/images/testi1.png"
                         alt="Customer"
+                        width={48}
+                        height={48}
                         className="w-12 h-12 rounded-full object-cover mr-4"
+                        loading="lazy"
                       />
                       <div>
                         <h4 className="font-semibold">Samir</h4>

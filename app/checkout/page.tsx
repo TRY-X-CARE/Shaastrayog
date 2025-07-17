@@ -22,6 +22,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Lock } from "lucide-react";
 import Script from "next/script";
 import { trackAddPaymentInfo, trackPurchase } from "@/lib/facebook-pixel";
+import Image from "next/image";
 
 // Types
 interface CartItem {
@@ -713,10 +714,13 @@ export default function CheckoutPage(): JSX.Element {
                   <div key={item.id} className="flex justify-between">
                     <div className="flex items-center">
                       <div className="w-16 h-16 rounded bg-gray-100 overflow-hidden mr-3">
-                        <img
+                        <Image
                           src={item.image}
                           alt={item.name}
+                          width={64}
+                          height={64}
                           className="w-full h-full object-cover"
+                          loading="lazy"
                         />
                       </div>
                       <div>
