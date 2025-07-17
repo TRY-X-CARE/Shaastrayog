@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PCCarousel from '@/components/ui/pc-carousel';
+import useEmblaCarousel from 'embla-carousel-react';
 
 type CarouselItem = {
   id: string | number;
@@ -23,6 +24,7 @@ type ProductCarouselProps = {
 function Carousel({ carouselItems }: ProductCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const [emblaRef] = useEmblaCarousel({ loop: true });
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
@@ -57,67 +59,72 @@ function Carousel({ carouselItems }: ProductCarouselProps) {
     <>
       <div className="relative w-full overflow-hidden object-cover mt-4">
         <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          ref={emblaRef}
+          className="overflow-hidden"
         >
-          {carouselItems.map((item) => (
-            <Link
-              href={item.productUrl}
-              key={item.id}
-              className="min-w-full relative cursor-pointer aspect-[4/4] md:aspect-[16/4] lg:aspect-[16/4.4]"
-            >
-              <div className="relative w-full h-[50vh] overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-900/40 to-transparent z-10" />
-                {item.type === "video" ? (
-                  <video
-                    src={item.videoUrl}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-[50vh] object-cover"
-                  />
-                ) : (
-                  <Image
-                    src={item.image || "/api/placeholder/1200/500"}
-                    alt={item.title || "Product Image"}
-                    fill
-                    priority
-                    style={{ objectFit: "fill", borderRadius: 0 }}
-                  />
-                )}
-              </div>
-
-              <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 md:px-12 z-20">
-                <div className="max-w-lg">
-                  {item.title && (
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
-                      {item.title}
-                    </h2>
-                  )}
-                  {item.subtitle && (
-                    <p className="text-base sm:text-lg text-green-100 mb-4">
-                      {item.subtitle}
-                    </p>
-                  )}
-                  {(item.price || item.originalPrice) && (
-                    <div className="flex items-center gap-3 mb-4">
-                      {item.price && (
-                        <span className="text-2xl sm:text-3xl font-bold text-amber-500">
-                          {item.price}
-                        </span>
-                      )}
-                      {item.originalPrice && (
-                        <span className="text-base sm:text-lg line-through text-white/70">
-                          {item.originalPrice}
-                        </span>
-                      )}
-                    </div>
+          <div
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {carouselItems.map((item) => (
+              <Link
+                href={item.productUrl}
+                key={item.id}
+                className="min-w-full relative cursor-pointer aspect-[4/4] md:aspect-[16/4] lg:aspect-[16/4.4]"
+              >
+                <div className="relative w-full h-[50vh] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-900/40 to-transparent z-10" />
+                  {item.type === "video" ? (
+                    <video
+                      src={item.videoUrl}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-[50vh] object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={item.image || "/api/placeholder/1200/500"}
+                      alt={item.title || "Product Image"}
+                      fill
+                      priority
+                      style={{ objectFit: "fill", borderRadius: 0 }}
+                    />
                   )}
                 </div>
-              </div>
-            </Link>
-          ))}
+
+                <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 md:px-12 z-20">
+                  <div className="max-w-lg">
+                    {item.title && (
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
+                        {item.title}
+                      </h2>
+                    )}
+                    {item.subtitle && (
+                      <p className="text-base sm:text-lg text-green-100 mb-4">
+                        {item.subtitle}
+                      </p>
+                    )}
+                    {(item.price || item.originalPrice) && (
+                      <div className="flex items-center gap-3 mb-4">
+                        {item.price && (
+                          <span className="text-2xl sm:text-3xl font-bold text-amber-500">
+                            {item.price}
+                          </span>
+                        )}
+                        {item.originalPrice && (
+                          <span className="text-base sm:text-lg line-through text-white/70">
+                            {item.originalPrice}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {carouselItems.length > 1 && (

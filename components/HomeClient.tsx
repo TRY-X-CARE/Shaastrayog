@@ -130,13 +130,7 @@ export default function HomeClient() {
             <p className="text-sm text-gray-600 leading-relaxed">
               Shilajit is rich in nutrients such as mineral salts, amino acids,
               and other organic components including benzoic acid, hippuric
-              acid, fatty acids (myristic acid, stearic acid, oleic acid,
-              petroselinic acid, linoleic acid, lauric acid, saturated fatty
-              acids), ichthyridine, salicylic acid, resins, triterpenes,
-              sterols, aromatic carboxylic acids, 3,4-benzocoumarins, amino
-              groups acids, phenolic lipids, latex, albumin, sterols, tea
-              polyphenols, phenolic lipids, dibenzo-alpha-pyrones (DBP), and
-              dibenzo-α-pyrone chromoproteins (DCPs). Although shilajit is
+              acid, fatty acids. Although shilajit is
               sometimes referred to as a mineral tar or resin, it is neither. It
               is a highly viscous substance like a tar or resin, that is very
               dark brown or black in color, but unlike these is readily soluble
@@ -162,7 +156,7 @@ export default function HomeClient() {
             <h3 className="text-2xl md:text-4xl font-bold text-center md:text-left">
             Shilajit: Nature’s Ancient Elixir for Vitality
             </h3>
-            <p className="text-sm text-gray-600 leading-relaxed pr-4">
+            <p className="text-lg text-gray-600 leading-relaxed pr-4">
             Shilajit, revered for centuries in Ayurvedic tradition, is a potent natural substance formed from the slow decomposition of plant matter in the Himalayan mountains. Known as the "destroyer of weakness," it is rich in fulvic acid, minerals, and bioactive compounds that help rejuvenate the body and mind. Shilajit is believed to boost energy, enhance stamina, support cognitive function, and promote overall vitality. Its adaptogenic properties help the body manage stress, while its antioxidant content aids in cellular protection and healthy aging. Experience the ancient power of Shilajit and unlock your natural potential for wellness and vigor.
             </p>
             <div className="flex justify-center md:justify-start ">
@@ -193,7 +187,7 @@ export default function HomeClient() {
             <h3 className="text-2xl md:text-4xl font-bold text-center">
               Explore Our Range of Ayurvedic Products
             </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed">
               Discover a curated selection of authentic Ayurvedic products
               designed to support your holistic wellness journey. From herbal
               supplements to natural skincare, our offerings are rooted in
@@ -249,7 +243,7 @@ export default function HomeClient() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-gray-600">
+                    <p className="text-lg text-gray-600">
                       &ldquo;My journey at Shaastrayog has been nothing short of
                       transformative. The combination of ancient wisdom and modern
                       techniques has helped me find a deeper connection to myself. The
