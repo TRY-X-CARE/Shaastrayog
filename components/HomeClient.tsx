@@ -11,6 +11,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import FeaturesSection from "@/components/ui/features-section";
 import Script from "next/script";
+import MarqueeCarousel from "@/components/ui/marquee-carousel";
 
 const carouselItems = [
   {
@@ -153,29 +154,16 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
+      <MarqueeCarousel />
 
       <section className="bg-gray-50 mb-8 p-[10px]">
         <div className="container mx-auto flex flex-col-reverse p-4 md:flex-row justify-between items-center gap-6">
           <div className="w-full  flex flex-col gap-4">
             <h3 className="text-2xl md:text-4xl font-bold text-center md:text-left">
-              Shaastra Narsingh Testobooster
+            Shilajit: Nature’s Ancient Elixir for Vitality
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed pr-4">
-              Narsingh Prash is a classical Ayurvedic recipe designed to enhance
-              both overall and sexual health. Its unique blend of natural
-              ingredients offers a multitude of benefits: Improves Overall
-              Health Narsingh prash supports holistic well-being by enhancing
-              bodily functions and boosting immunity. Rejuvenates Cells and
-              Tissues The potent ingredients in Narsingh prash promote cellular
-              rejuvenation and repair, ensuring healthy and vibrant tissues.
-              Boosts Stamina, Strength, and Endurance Regular use of Narsingh
-              powder enhances physical performance, providing increased stamina,
-              strength, and endurance for daily activities and workouts.
-              Aphrodisiac Properties As an effective aphrodisiac, Narsingh prash
-              stimulates sexual health and vitality, enhancing libido and
-              improving overall sexual performance. Experience the timeless
-              benefits of Narsingh Prash and elevate your health and vitality
-              naturally.
+            Shilajit, revered for centuries in Ayurvedic tradition, is a potent natural substance formed from the slow decomposition of plant matter in the Himalayan mountains. Known as the "destroyer of weakness," it is rich in fulvic acid, minerals, and bioactive compounds that help rejuvenate the body and mind. Shilajit is believed to boost energy, enhance stamina, support cognitive function, and promote overall vitality. Its adaptogenic properties help the body manage stress, while its antioxidant content aids in cellular protection and healthy aging. Experience the ancient power of Shilajit and unlock your natural potential for wellness and vigor.
             </p>
             <div className="flex justify-center md:justify-start ">
               <Button size="lg" asChild>
@@ -236,90 +224,105 @@ export default function HomeClient() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="testimonial-card p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCanLjnrR53p8QxclHUjpEhCp4qaj5B-T24FQWRrUhs41MGEcpmyEZMMNTHXWu2RqhUtE&usqp=CAU"
-                  alt="Customer"
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <h4 className="font-semibold">Raj Kumar</h4>
-                  <div className="flex text-yellow-400">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
+          <div className="w-full overflow-hidden">
+            <div
+              className="flex w-max animate-marquee-testimonial items-center"
+              style={{ animation: "marquee-testimonial 10s linear infinite" }}
+            >
+              {[0, 1].map((groupIdx) => (
+                <div className="flex" key={groupIdx}>
+                  {/* Testimonial 1 */}
+                  <div className="testimonial-card p-8 rounded-lg shadow-md mx-4 min-w-[320px] max-w-xs flex-shrink-0">
+                    <div className="flex items-center mb-4">
+                      <img
+                        src="/images/testi3.png"
+                        className="w-12 h-12 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <h4 className="font-semibold">Raj Kumar</h4>
+                        <div className="flex text-yellow-400">
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-gray-600">
+                      &ldquo;My journey at Shaastrayog has been nothing short of
+                      transformative. The combination of ancient wisdom and modern
+                      techniques has helped me find a deeper connection to myself. The
+                      workshops are engaging, and the community is incredibly
+                      supportive. I leave every session feeling rejuvenated and
+                      inspired!&ldquo;
+                    </p>
+                  </div>
+                  {/* Testimonial 2 */}
+                  <div className="testimonial-card p-8 rounded-lg shadow-md mx-4 min-w-[320px] max-w-xs flex-shrink-0">
+                    <div className="flex items-center mb-4">
+                      <img
+                        src="/images/testi2.png"
+                        alt="Customer"
+                        className="w-12 h-12 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <h4 className="font-semibold">Arif Mohammad </h4>
+                        <div className="flex text-yellow-400">
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-gray-600">
+                      &ldquo;ShaastraYog has truly changed my life. The personalized
+                      consultations provided me with insights into my health that I
+                      never knew I needed. The practitioners are knowledgeable and
+                      genuinely care about each individual's journey. I feel
+                      healthier, both physically and mentally, than ever
+                      before.&ldquo;
+                    </p>
+                  </div>
+                  {/* Testimonial 3 */}
+                  <div className="testimonial-card p-8 rounded-lg shadow-md mx-4 min-w-[320px] max-w-xs flex-shrink-0">
+                    <div className="flex items-center mb-4">
+                      <img
+                        src="/images/testi1.png"
+                        alt="Customer"
+                        className="w-12 h-12 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <h4 className="font-semibold">Samir</h4>
+                        <div className="flex text-yellow-400">
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-gray-600">
+                      &ldquo;I was a complete beginner when I first joined, and I was
+                      nervous about trying yoga. The warm, welcoming atmosphere at
+                      ShaastraYog made all the difference. The instructors guide you
+                      every step of the way, and I now look forward to my yoga
+                      sessions. It's not just exercise; it's a path to
+                      self-discovery.&ldquo;
+                    </p>
                   </div>
                 </div>
-              </div>
-              <p className="text-gray-600">
-                &ldquo;My journey at Shaastrayog has been nothing short of
-                transformative. The combination of ancient wisdom and modern
-                techniques has helped me find a deeper connection to myself. The
-                workshops are engaging, and the community is incredibly
-                supportive. I leave every session feeling rejuvenated and
-                inspired!&ldquo;
-              </p>
+              ))}
             </div>
-
-            <div className="testimonial-card p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Customer"
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <h4 className="font-semibold">Arif Mohammad </h4>
-                  <div className="flex text-yellow-400">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-600">
-                &ldquo;ShaastraYog has truly changed my life. The personalized
-                consultations provided me with insights into my health that I
-                never knew I needed. The practitioners are knowledgeable and
-                genuinely care about each individual's journey. I feel
-                healthier, both physically and mentally, than ever
-                before.&ldquo;
-              </p>
-            </div>
-
-            <div className="testimonial-card p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://images.pond5.com/young-indian-man-city-face-footage-067751787_iconl.jpeg"
-                  alt="Customer"
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <h4 className="font-semibold">Samir</h4>
-                  <div className="flex text-yellow-400">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-600">
-                &ldquo;I was a complete beginner when I first joined, and I was
-                nervous about trying yoga. The warm, welcoming atmosphere at
-                ShaastraYog made all the difference. The instructors guide you
-                every step of the way, and I now look forward to my yoga
-                sessions. It's not just exercise; it's a path to
-                self-discovery.&ldquo;
-              </p>
-            </div>
+            <style jsx global>{`
+              @keyframes marquee-testimonial {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+            `}</style>
           </div>
         </div>
       </section>

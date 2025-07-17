@@ -98,12 +98,10 @@ export function Footer() {
                 className="flex row gap-2 mt-4"
               >
                 <Image
-                  src={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZe2_cwIfo0yLvg5c9kvfNH7QhekWrjSuSA&s"
-                  }
+                  src={"/images/amazon.png"}
                   height={20}
                   width={30}
-                  alt={"am"}
+                  alt={"Amazon"}
                   className="rounded-xl"
                 />
                 Amazon
@@ -114,12 +112,10 @@ export function Footer() {
                 className="flex row gap-2 mt-4"
               >
                 <Image
-                  src={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVWzGxiYGlEM-IzG4PWRrn875F0LOcXLulhQ&s"
-                  }
-                  height={5}
+                  src={"/images/flipkart.png"}
+                  height={20}
                   width={30}
-                  alt={"flipkart"}
+                  alt={"Flipkart"}
                   className="rounded-xl"
                 />
                 Flipkart
@@ -131,9 +127,7 @@ export function Footer() {
                 className="flex row gap-2   mt-4"
               >
                 <Image
-                  src={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwLk4-3xOKJNnZmp1foAKi7sZg7mjLe0Xo4g&s"
-                  }
+                  src={"/images/snapdeal.png"}
                   height={20}
                   width={30}
                   alt={"Snapdeal"}
@@ -150,13 +144,11 @@ export function Footer() {
                 className="flex row gap-2  mt-4"
               >
                 <Image
-                  src={
-                    "https://www.netmeds.com/images/cms/offers/1702556493_Netmeds_logo.png"
-                  }
+                  src={"/images/netmeds.png"}
                   height={20}
                   width={30}
                   className="rounded-xl"
-                  alt={"netmeds"}
+                  alt={"Netmeds"}
                 />
                 Netmeds
               </Link>
@@ -167,9 +159,7 @@ export function Footer() {
                 className="flex row gap-2  mt-4"
               >
                 <Image
-                  src={
-                    "https://yt3.googleusercontent.com/zVbonr8k0_0_CwI0w59kQtiRB6EupuzNhXKxWEyhDOnpdNwMj7I0odwDn9i0ZkJgExE36MQX9g=s900-c-k-c0x00ffffff-no-rj"
-                  }
+                  src={"/images/pharmeasy.png"}
                   height={20}
                   width={30}
                   alt={"Pharmeasy"}
@@ -192,9 +182,7 @@ export function Footer() {
                 className="flex row gap-2  mt-4 rounded-xl"
               >
                 <Image
-                  src={
-                    "https://play-lh.googleusercontent.com/yjbAu08_Ahes38IEMV8slP91zgjh2mdh5xpZefvcbYuZxR8O7FZFderRn2Ivaz0uR2Lw"
-                  }
+                  src={"/images/1mg.png"}
                   height={20}
                   width={30}
                   alt={"1mg"}
@@ -266,12 +254,12 @@ export function Footer() {
             </p>
             <div className="flex items-center space-x-4">
               <img
-                src="https://www.citypng.com/public/uploads/preview/download-visa-card-logo-icon-png-735811696866915avdywnhoab.png"
+                src="/images/visa.png"
                 alt="Visa"
                 className="h-8"
               />
               <img
-                src="https://static-00.iconduck.com/assets.00/mastercard-icon-2048x1587-tygju446.png  "
+                src="/images/mastercard.png"
                 alt="Mastercard"
                 className="h-6"
               />

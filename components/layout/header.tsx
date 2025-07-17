@@ -99,7 +99,6 @@ export function Header() {
               </Button>
             </>
           )}
-
           <Button variant="ghost" size="icon" asChild className="relative">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5" />
@@ -112,18 +111,29 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <Button
-          size="icon"
-          className="md:hidden"
-          onClick={toggleMobileMenu}
-        >
-          {isMobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </Button>
+        <div className="flex items-center md:hidden space-x-2">
+          <Button variant="ghost" size="icon" asChild className="relative">
+            <Link href="/cart">
+              <ShoppingCart className="h-6 w-6" />
+              {cartContext.totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartContext.totalItems}
+                </span>
+              )}
+            </Link>
+          </Button>
+          <Button
+            size="icon"
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -158,6 +168,7 @@ export function Header() {
             >
               Contact
             </Link>
+            {/* Cart button removed from mobile menu */}
             <div className="flex items-center justify-between pt-4 border-t">
               {status === "authenticated" ? (
                 <>
@@ -200,20 +211,6 @@ export function Header() {
                   </Button>
                 </>
               )}
-              <Button
-                variant="outline"
-                asChild
-                className="w-full ml-2 relative"
-              >
-                <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)}>
-                  Cart
-                  {cartContext.totalItems > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      {cartContext.totalItems}
-                    </span>
-                  )}
-                </Link>
-              </Button>
             </div>
           </nav>
         </div>

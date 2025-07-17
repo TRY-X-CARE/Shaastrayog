@@ -16,8 +16,10 @@ const FeaturesSection = () => (
         <div className="grid grid-cols-3 md:grid-cols-6 gap-6 w-full">
           {features.map((feature, idx) => (
             <div key={idx} className="flex flex-col items-center text-center">
-              <div className="mb-2">{feature.icon}</div>
-              <span className="font-semibold text-sm md:text-base text-gray-800">{feature.label}</span>
+              <div className="glow-gold flex flex-col items-center">
+                <div className="mb-2">{feature.icon}</div>
+                <span className="font-semibold text-sm md:text-base text-gray-800">{feature.label}</span>
+              </div>
             </div>
           ))}
         </div>
